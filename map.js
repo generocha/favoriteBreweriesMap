@@ -17,6 +17,9 @@ function initMap() {
         location.state = this[5];
         location.latitude = parseFloat(this[7]);
         location.longitude = parseFloat(this[8]);
+        location.beer = this[9];
+        location.beer_style = this[10];
+        location.beer_description = this[11];
         location.url = this[6];
         locations.push(location);
       });
@@ -166,20 +169,26 @@ function addMarker(map, location, infoWindow) {
   google.maps.event.addListener(marker, "click", function () {
     infoWindow.setContent(
       "<div><h2>" +
-        location.brewery +
-        "</h2><h3>" +
-        location.locationName +
-        "</h3><p>" +
-        location.address +
-        "<br/>" +
-        location.city +
-        " " +
-        location.state +
-        "</p><p><a href='" +
-        location.url +
-        "' target='_blank'>" +
-        location.url +
-        "</a></p></div>"
+      location.brewery +
+      "</h2><h3>" +
+      location.locationName +
+      "</h3><p>" +
+      location.address +
+      "<br/>" +
+      location.city +
+      " " +
+      location.state +
+      "</p><h4>" +
+      location.beer +
+      "</h4><p>" +
+      location.beer_style +
+      "</p><p>" +
+      location.beer_description +
+      "</p><a href='" +
+      location.url +
+      "' target='_blank'>" +
+      location.url +
+      "</a></p></div>"
     );
     infoWindow.open(map, marker);
   });
